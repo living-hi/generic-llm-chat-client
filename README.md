@@ -6,31 +6,49 @@ A small Windows command-line chat client for OpenAI-compatible `chat/completions
 
 It can talk to different model providers by changing the endpoint, model name, API key environment variable, and authorization header.
 
+By default it uses DeepSeek, so no config file is required for the first run.
+
 ## Files
 
 - `LLMChat.ps1` - main PowerShell client
 - `LLMChat.bat` - double-click friendly Windows launcher
-- `llm-chat.config.example.json` - example local configuration
+- `llm-chat.config.example.json` - optional advanced configuration example
 
 ## Quick Start
 
-Set a DeepSeek API key in an environment variable:
+### Easiest: double-click
+
+1. Double-click `LLMChat.bat`.
+2. Paste your DeepSeek API key when prompted.
+3. Start chatting.
+
+The pasted key is only used for the current session.
+
+### Optional: save the key for future runs
+
+Save your DeepSeek API key as a user environment variable:
 
 ```powershell
-$env:DEEPSEEK_API_KEY = "your-api-key"
+[Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", "your-api-key", "User")
 ```
 
-Run the client:
+Close and reopen PowerShell, then run:
 
 ```powershell
 .\LLMChat.ps1
 ```
 
-Or double-click `LLMChat.bat` after creating `llm-chat.config.json`.
+You can also pass the key for one run:
 
-## Local Config
+```powershell
+.\LLMChat.ps1 -ApiKey "your-api-key"
+```
 
-Copy `llm-chat.config.example.json` to `llm-chat.config.json`, then edit it for your provider.
+## Optional Config
+
+You do not need a config file for DeepSeek. The default settings are already built into `LLMChat.ps1`.
+
+Use a config file only if you want to make another provider the default. Copy `llm-chat.config.example.json` to `llm-chat.config.json`, then edit it.
 
 Do not commit `llm-chat.config.json` if it contains private endpoints or sensitive defaults. Never put API keys in config files.
 
@@ -91,31 +109,49 @@ And return an assistant message at `choices[0].message.content`.
 
 你可以通过修改接口地址、模型名称、API Key 环境变量和鉴权请求头，切换到不同的大模型服务商。
 
+默认使用 DeepSeek，第一次运行不需要创建或改名任何配置文件。
+
 ## 文件说明
 
 - `LLMChat.ps1` - 主要的 PowerShell 聊天客户端
 - `LLMChat.bat` - 适合双击运行的 Windows 启动脚本
-- `llm-chat.config.example.json` - 本地配置文件示例
+- `llm-chat.config.example.json` - 可选的高级配置示例
 
 ## 快速开始
 
-先把 DeepSeek API Key 放到环境变量里：
+### 最简单：直接双击
+
+1. 双击 `LLMChat.bat`。
+2. 按提示粘贴你的 DeepSeek API Key。
+3. 开始聊天。
+
+粘贴的 Key 只在本次运行中使用，不会写入文件。
+
+### 可选：保存 Key，以后不用每次粘贴
+
+把 DeepSeek API Key 保存为用户环境变量：
 
 ```powershell
-$env:DEEPSEEK_API_KEY = "your-api-key"
+[Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", "your-api-key", "User")
 ```
 
-运行客户端：
+关闭并重新打开 PowerShell，然后运行：
 
 ```powershell
 .\LLMChat.ps1
 ```
 
-如果你已经创建了 `llm-chat.config.json`，也可以直接双击 `LLMChat.bat` 启动。
+也可以只在本次运行时传入：
 
-## 本地配置
+```powershell
+.\LLMChat.ps1 -ApiKey "your-api-key"
+```
 
-复制配置示例：
+## 可选配置
+
+使用 DeepSeek 时不需要配置文件，脚本里已经内置了默认配置。
+
+只有当你想把其他服务商设为默认值时，才需要复制配置示例：
 
 ```powershell
 Copy-Item .\llm-chat.config.example.json .\llm-chat.config.json

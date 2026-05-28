@@ -15,10 +15,11 @@ param(
 #
 # Examples:
 #   .\LLMChat.ps1
+#   .\LLMChat.ps1 -ApiKey "your-api-key"
 #   .\LLMChat.ps1 -ProviderName "OpenAI" -Endpoint "https://api.openai.com/v1/chat/completions" -Model "gpt-4.1" -ApiKeyEnv "OPENAI_API_KEY"
 #   .\LLMChat.ps1 -ProviderName "Local" -Endpoint "http://localhost:11434/v1/chat/completions" -Model "qwen2.5:7b" -AuthHeaderName "none"
 #
-# Optional local config file beside this script: llm-chat.config.json
+# No config file is required. Optional local config file beside this script: llm-chat.config.json
 # Do not put API keys in files that will be published to GitHub.
 
 $ErrorActionPreference = "Stop"
@@ -138,7 +139,13 @@ function Read-ApiKey($configuredApiKey, $envNames) {
         }
     }
 
-    $secureKey = Read-Host "Enter API Key" -AsSecureString
+    Write-Host "No saved API key found. Paste an API key to use it for this session only."
+    if ($envNames -and $envNames.Count -gt 0) {
+        Write-Host "Tip: set $($envNames[0]) as an environment variable if you do not want to paste it every time."
+        Write-Host "PowerShell example: [Environment]::SetEnvironmentVariable(`"$($envNames[0])`", `"your-api-key`", `"User`")"
+    }
+
+    $secureKey = Read-Host "API Key" -AsSecureString
     $ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureKey)
     try {
         return [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
