@@ -14,16 +14,16 @@ It can talk to different model providers by changing the endpoint, model name, A
 
 ## Quick Start
 
-Set an API key in an environment variable:
+Set a DeepSeek API key in an environment variable:
 
 ```powershell
-$env:OPENAI_API_KEY = "your-api-key"
+$env:DEEPSEEK_API_KEY = "your-api-key"
 ```
 
 Run the client:
 
 ```powershell
-.\LLMChat.ps1 -ProviderName "OpenAI" -Endpoint "https://api.openai.com/v1/chat/completions" -Model "gpt-4.1" -ApiKeyEnv "OPENAI_API_KEY"
+.\LLMChat.ps1
 ```
 
 Or double-click `LLMChat.bat` after creating `llm-chat.config.json`.
@@ -52,7 +52,7 @@ Do not commit `llm-chat.config.json` if it contains private endpoints or sensiti
 .\LLMChat.ps1 `
   -ProviderName "DeepSeek" `
   -Endpoint "https://api.deepseek.com/chat/completions" `
-  -Model "deepseek-chat" `
+  -Model "deepseek-v4-pro" `
   -ApiKeyEnv "DEEPSEEK_API_KEY"
 ```
 
@@ -99,16 +99,16 @@ And return an assistant message at `choices[0].message.content`.
 
 ## 快速开始
 
-先把 API Key 放到环境变量里：
+先把 DeepSeek API Key 放到环境变量里：
 
 ```powershell
-$env:OPENAI_API_KEY = "your-api-key"
+$env:DEEPSEEK_API_KEY = "your-api-key"
 ```
 
 运行客户端：
 
 ```powershell
-.\LLMChat.ps1 -ProviderName "OpenAI" -Endpoint "https://api.openai.com/v1/chat/completions" -Model "gpt-4.1" -ApiKeyEnv "OPENAI_API_KEY"
+.\LLMChat.ps1
 ```
 
 如果你已经创建了 `llm-chat.config.json`，也可以直接双击 `LLMChat.bat` 启动。
@@ -143,7 +143,7 @@ Copy-Item .\llm-chat.config.example.json .\llm-chat.config.json
 .\LLMChat.ps1 `
   -ProviderName "DeepSeek" `
   -Endpoint "https://api.deepseek.com/chat/completions" `
-  -Model "deepseek-chat" `
+  -Model "deepseek-v4-pro" `
   -ApiKeyEnv "DEEPSEEK_API_KEY"
 ```
 

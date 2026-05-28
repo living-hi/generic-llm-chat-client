@@ -32,10 +32,10 @@ try {
 }
 
 $defaults = @{
-    providerName = "Jiutian"
-    endpoint = "https://jiutian.10086.cn/largemodel/moma/api/v3/chat/completions"
-    model = "jiutian/jiutian-lan-35b"
-    apiKeyEnv = "LLM_API_KEY,OPENAI_API_KEY,JIUTIAN_API_KEY,JT_API_KEY,MOMA_API_KEY"
+    providerName = "DeepSeek"
+    endpoint = "https://api.deepseek.com/chat/completions"
+    model = "deepseek-v4-pro"
+    apiKeyEnv = "DEEPSEEK_API_KEY,LLM_API_KEY,OPENAI_API_KEY"
     authHeaderName = "Authorization"
     authScheme = "Bearer"
     timeoutSeconds = 120
