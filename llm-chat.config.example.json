@@ -1,0 +1,10 @@
+{
+  "providerName": "Jiutian",
+  "endpoint": "https://jiutian.10086.cn/largemodel/moma/api/v3/chat/completions",
+  "model": "jiutian/jiutian-lan-35b",
+  "apiKeyEnv": "JIUTIAN_API_KEY,LLM_API_KEY,OPENAI_API_KEY",
+  "authHeaderName": "Authorization",
+  "authScheme": "Bearer",
+  "timeoutSeconds": 120,
+  "extraHeaders": {}
+}
