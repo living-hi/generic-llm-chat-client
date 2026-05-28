@@ -1,5 +1,7 @@
 # Generic LLM Chat Client
 
+[English](#generic-llm-chat-client) | [中文](#通用大模型聊天客户端)
+
 A small Windows command-line chat client for OpenAI-compatible `chat/completions` APIs.
 
 It can talk to different model providers by changing the endpoint, model name, API key environment variable, and authorization header.
@@ -34,24 +36,24 @@ Do not commit `llm-chat.config.json` if it contains private endpoints or sensiti
 
 ## Examples
 
-### Jiutian
+### OpenAI
 
 ```powershell
 .\LLMChat.ps1 `
-  -ProviderName "Jiutian" `
-  -Endpoint "https://jiutian.10086.cn/largemodel/moma/api/v3/chat/completions" `
-  -Model "jiutian/jiutian-lan-35b" `
-  -ApiKeyEnv "JIUTIAN_API_KEY"
+  -ProviderName "OpenAI" `
+  -Endpoint "https://api.openai.com/v1/chat/completions" `
+  -Model "gpt-4.1" `
+  -ApiKeyEnv "OPENAI_API_KEY"
 ```
 
-### OpenAI-Compatible Local Server
+### DeepSeek
 
 ```powershell
 .\LLMChat.ps1 `
-  -ProviderName "Local" `
-  -Endpoint "http://localhost:11434/v1/chat/completions" `
-  -Model "qwen2.5:7b" `
-  -AuthHeaderName "none"
+  -ProviderName "DeepSeek" `
+  -Endpoint "https://api.deepseek.com/chat/completions" `
+  -Model "deepseek-chat" `
+  -ApiKeyEnv "DEEPSEEK_API_KEY"
 ```
 
 ## In-Chat Commands
@@ -82,6 +84,8 @@ And return an assistant message at `choices[0].message.content`.
 ---
 
 # 通用大模型聊天客户端
+
+[English](#generic-llm-chat-client) | [中文](#通用大模型聊天客户端)
 
 这是一个轻量级 Windows 命令行聊天客户端，适用于兼容 OpenAI `chat/completions` 格式的大模型 API。
 
@@ -123,26 +127,24 @@ Copy-Item .\llm-chat.config.example.json .\llm-chat.config.json
 
 ## 使用示例
 
-### 九天
+### OpenAI
 
 ```powershell
 .\LLMChat.ps1 `
-  -ProviderName "Jiutian" `
-  -Endpoint "https://jiutian.10086.cn/largemodel/moma/api/v3/chat/completions" `
-  -Model "jiutian/jiutian-lan-35b" `
-  -ApiKeyEnv "JIUTIAN_API_KEY"
+  -ProviderName "OpenAI" `
+  -Endpoint "https://api.openai.com/v1/chat/completions" `
+  -Model "gpt-4.1" `
+  -ApiKeyEnv "OPENAI_API_KEY"
 ```
 
-### 本地 OpenAI 兼容服务
-
-例如 Ollama、LM Studio 或其他本地网关，只要提供兼容的 `/v1/chat/completions` 接口即可：
+### DeepSeek
 
 ```powershell
 .\LLMChat.ps1 `
-  -ProviderName "Local" `
-  -Endpoint "http://localhost:11434/v1/chat/completions" `
-  -Model "qwen2.5:7b" `
-  -AuthHeaderName "none"
+  -ProviderName "DeepSeek" `
+  -Endpoint "https://api.deepseek.com/chat/completions" `
+  -Model "deepseek-chat" `
+  -ApiKeyEnv "DEEPSEEK_API_KEY"
 ```
 
 ## 聊天内命令
